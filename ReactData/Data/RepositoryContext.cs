@@ -3,9 +3,9 @@ using ReactData.Models;
 
 namespace ReactData.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class RepositoryContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
         }
 

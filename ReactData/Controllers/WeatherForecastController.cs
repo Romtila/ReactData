@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReactData.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

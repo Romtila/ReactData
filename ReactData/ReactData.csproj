@@ -34,15 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\components\AddUser.tsx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\components\AddUser.tsx" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

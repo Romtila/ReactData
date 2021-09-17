@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ReactData.Data;
 using ReactData.Models;
 using ReactData.Repositories;
+using ReactData.Services;
 
 namespace ReactData.Controllers
 {
@@ -16,25 +17,25 @@ namespace ReactData.Controllers
     [Route("[controller]")]
     public class UsersController : Controller
     {
-        private IRepository _repository;
+        private readonly IUserService _userService;
 
-        public UsersController(IRepository repository)
+        public UsersController(IUserService userService)
         {
-            _repository = repository;
+            _userService = userService;
         }
 
         [Route("Users")]
         [HttpGet]
         public async Task<IEnumerable<User>> GetUsers()
         {
-            return await _repository.GetUserList();
+            return await _userService.GetUsers();
         }
 
-        [HttpPost]
         [Route("SaveUser")]
-        public async Task<IActionResult> SaveUser([FromBody] User user)
+        [HttpPost]
+        public async Task<IActionResult> AddUser([FromBody] User user)
         {
-            return Ok(await _repository.Create(user));
+            return await _userService.AddUser(user) ? Ok() : StatusCode(500);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace ReactData.Repositories
     {
         Task<List<User>> GetUserList();
 
-        Task<bool> Create(User user);
+        Task<bool> AddUser(User user);
+
+        Task<bool> AddUsers(List<User> users);
     }
 }

@@ -10,9 +10,9 @@ export default class App extends Component {
 
     render() {
         return (
-            <Layout>
-                <Route path='/FetchUser' component={FetchUser} />
-            </Layout>
+            <div>
+                <FetchUser />
+            </div>
         );
     }
 }

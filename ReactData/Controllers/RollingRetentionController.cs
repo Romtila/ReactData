@@ -8,6 +8,8 @@ using ReactData.Services;
 
 namespace ReactData.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class RollingRetentionController : Controller
     {
         private readonly IRollingRetentionService _rollingRetentionService;
@@ -17,20 +19,20 @@ namespace ReactData.Controllers
             _rollingRetentionService = rollingRetentionService;
         }
 
-        [HttpGet("CalculateRollingRetentionXDayFromDB")]
+        [HttpGet("CalculateDataRollingRetentionXDayFromDB")]
         public async Task<List<RollingRetentionXDay>> CalculateRollingRetentionXDayFromDB()
             => await _rollingRetentionService.GetRollingRetentionXDayFromDB();
 
-        [HttpGet("CalculateRollingRetention7DayFromDB")]
+        [HttpGet("CalculateDataRollingRetention7DayFromDB")]
         public async Task<List<RollingRetention7Day>> CalculateRollingRetention7DayFromDB()
             => await _rollingRetentionService.GetRollingRetention7DayFromDB();
 
-        [HttpPost("CalculateRollingRetention7DayFromClient")]
+        [HttpPost("CalculateDataRollingRetention7DayFromClient")]
         public async Task<List<RollingRetention7Day>> CalculateRollingRetention7DayFromClient(List<User> users)
             => await _rollingRetentionService.GetRollingRetention7DayFromClient(users);
 
 
-        [HttpPost("CalculateRollingRetentionXDayFromClient")]
+        [HttpPost("CalculateDataRollingRetentionXDayFromClient")]
         public async Task<List<RollingRetentionXDay>> CalculateRollingRetentionXDayFromClient(List<User> users)
             => await _rollingRetentionService.GetRollingRetentionXDayFromClient(users);
     }

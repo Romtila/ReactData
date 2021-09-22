@@ -1,18 +1,12 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { FetchUser } from './components/FetchUser.tsx';
+import { DateTable, RollingRetention } from "./components";
 
-import './custom.css'
-
-export default class App extends Component {
-    static displayName = App.name;
-
-    render() {
-        return (
-            <div>
-                <FetchUser />
-            </div>
-        );
-    }
+function App() {
+    return (
+        <div>
+            <DateTable />
+            <RollingRetention />
+        </div>
+    );
 }
+
+export default App;

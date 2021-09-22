@@ -32,6 +32,7 @@ namespace ReactData
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRollingRetentionService, RollingRetentionService>();
             services.AddScoped<IRepository, UserRepository>();
 
             services.AddControllers();

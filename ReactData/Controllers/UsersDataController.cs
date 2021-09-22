@@ -14,28 +14,26 @@ using ReactData.Services;
 namespace ReactData.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class UsersController : Controller
+    [Route("api/[controller]")]
+    public class UsersDataController : Controller
     {
         private readonly IUserService _userService;
 
-        public UsersController(IUserService userService)
+        public UsersDataController(IUserService userService)
         {
             _userService = userService;
         }
-
-        [Route("Users")]
+        
         [HttpGet]
         public async Task<IEnumerable<User>> GetUsers()
         {
             return await _userService.GetUsers();
         }
-
-        [Route("SaveUser")]
+        
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] User user)
+        public async Task<IActionResult> AddUser(List<User> users)
         {
-            return await _userService.AddUser(user) ? Ok() : StatusCode(500);
+            return await _userService.AddUsers(users) ? Ok() : StatusCode(500);
         }
     }
 }

@@ -17,6 +17,7 @@ import {
     CALCULATE_DATA_X_DAY_FROM_CLIENT,
     SHOW_ALERT_ERROR_ROLLING_RETENTION,
     HIDE_ALERT_ERROR_ROLLING_RETENTION,
+    CALCULATE_ROLLING_RETENTION
 } from "./types";
 
 export function updateDate(datesUser) {
@@ -112,6 +113,23 @@ export function showAlertErrorRR(text) {
 export function hideAlertErrorRR() {
     return {
         type: HIDE_ALERT_ERROR_ROLLING_RETENTION,
+    };
+}
+
+export function calculateRollingRetention() {
+    return async (dispatch) => {
+        try {
+            dispatch(hideAlertErrorRR());
+            const resp = await axios.get(
+                "api/rollingretention/calculaterollingretention"
+            );
+            dispatch({
+                type: CALCULATE_ROLLING_RETENTION,
+                payload: resp.data,
+            });
+        } catch (err) {
+            dispatch(showAlertErrorRR("Something went wrong"));
+        }
     };
 }
 

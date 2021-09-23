@@ -8,7 +8,9 @@ import {
     calculateData7DayFromClient,
     calculateDataXDayFromDB,
     calculateDataXDayFromClient,
+    calculateRollingRetention,
 } from "../redux/actions";
+import axios from "axios";
 
 const RollingRetention = ({ datesUsers, alertErrorRR }) => {
     const dispath = useDispatch();
@@ -23,30 +25,27 @@ const RollingRetention = ({ datesUsers, alertErrorRR }) => {
         dispath(calculateData7DayFromClient(datesUsers));
     };
 
+const loadCalculateRRHandle = () => {
+        dispath(calculateRollingRetention(datesUsers));
+        dispath(calculateData7DayFromDB());
+    };
+
     return (
         <div className='container p-5'>
-            <h3 className='text-secondary'>ROLLING RETENTION</h3>
-            <div className='container p-5 pt-3'>
-                <RollingRetention7Day />
-            </div>
-            <div className='container p-5 pt-3'>
-                <RollingRetentionXDay />
-            </div>
-            <div className='container p-5 pt-0'>
+            <div className='container p-5 pt-1'>
                 {alertErrorRR && <AlertError text={alertErrorRR} />}
 
                 <button
                     type='button'
-                    className='btn btn-primary float-end'
-                    onClick={laodFromDBHandle}>
-                    Calculate from DB
+                    className='btn btn-primary'
+                    onClick={loadCalculateRRHandle}>
+                    Calculate
                 </button>
-                <button
-                    type='button'
-                    className='btn btn-primary float-end me-3'
-                    onClick={laodFromClientHandle}>
-                    Calculate from client
-                </button>
+            </div>
+            <h3 className='text-secondary'>Rolling Retention 7 day = {}%</h3>
+
+            <div className='container p-5 pt-3'>
+                <RollingRetention7Day />
             </div>
         </div>
     );
@@ -58,5 +57,7 @@ const mapStateToProps = (state) => {
         alertErrorRR: state.app.alertErrorRR,
     };
 };
+
+
 
 export default connect(mapStateToProps)(RollingRetention);

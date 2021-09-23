@@ -6,9 +6,11 @@ namespace ReactData.Services
 {
     public interface IRollingRetentionService
     {
-        Task<List<RollingRetentionXDay>> GetRollingRetentionXDayFromClient(List<User> users);
-        Task<List<RollingRetentionXDay>> GetRollingRetentionXDayFromDB();
-        Task<List<RollingRetention7Day>> GetRollingRetention7DayFromClient(List<User> users);
-        Task<List<RollingRetention7Day>> GetRollingRetention7DayFromDB();
+        //Task<List<RollingRetentionXDay>> GetRollingRetentionXDayFromClient(List<User> users);
+        //Task<List<RollingRetentionXDay>> GetRollingRetentionXDayFromDB();
+        //Task<List<RollingRetention7Day>> GetRollingRetention7DayFromClient(List<User> users);
+        Task<List<RollingRetentionXDay>> GetRollingRetention7DayFromDB();
+
+        Task<double> GetRollingRetention();
     }
 }

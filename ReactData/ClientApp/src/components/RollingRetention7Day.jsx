@@ -17,12 +17,12 @@ const options = {
 
 const RollingRetention7Day = ({ rollingRetention7Day }) => {
     const data = {
-        labels: rollingRetention7Day.map((data) => "User " + data.id),
+        labels: rollingRetention7Day.map((data) => data.userLifespan + " дней"),
         datasets: [
             {
-                label: "Day",
-                data: rollingRetention7Day.map((data) => data.userLifespan),
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                label: "Количество",
+                data: rollingRetention7Day.map((data) => data.count),
+                backgroundColor: "rgba(54, 162, 235, 1)",
                 borderColor: "rgba(54, 162, 235, 1)",
                 borderWidth: 1,
             },
@@ -30,7 +30,7 @@ const RollingRetention7Day = ({ rollingRetention7Day }) => {
     };
     return (
         <div>
-            <h2 className='text-secondary'>Rolling retention 7 day</h2>
+            <h2 className='text-secondary'>Гистрограмма распределения длительности жизней пользователя:</h2>
             <Bar data={data} options={options} />
         </div>
     );

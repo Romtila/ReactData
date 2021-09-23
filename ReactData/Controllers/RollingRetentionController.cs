@@ -19,21 +19,26 @@ namespace ReactData.Controllers
             _rollingRetentionService = rollingRetentionService;
         }
 
+        [HttpGet("CalculateRollingRetention")]
+        public async Task<double> CalculateRollingRetention()
+            => await _rollingRetentionService.GetRollingRetention();
+        /*
         [HttpGet("CalculateDataRollingRetentionXDayFromDB")]
         public async Task<List<RollingRetentionXDay>> CalculateRollingRetentionXDayFromDB()
             => await _rollingRetentionService.GetRollingRetentionXDayFromDB();
-
-        [HttpGet("CalculateDataRollingRetention7DayFromDB")]
-        public async Task<List<RollingRetention7Day>> CalculateRollingRetention7DayFromDB()
-            => await _rollingRetentionService.GetRollingRetention7DayFromDB();
-
+        
         [HttpPost("CalculateDataRollingRetention7DayFromClient")]
         public async Task<List<RollingRetention7Day>> CalculateRollingRetention7DayFromClient(List<User> users)
             => await _rollingRetentionService.GetRollingRetention7DayFromClient(users);
 
-
         [HttpPost("CalculateDataRollingRetentionXDayFromClient")]
         public async Task<List<RollingRetentionXDay>> CalculateRollingRetentionXDayFromClient(List<User> users)
-            => await _rollingRetentionService.GetRollingRetentionXDayFromClient(users);
+            => await _rollingRetentionService.GetRollingRetentionXDayFromClient(users);*/
+
+        [HttpGet("CalculateDataRollingRetention7DayFromDB")]
+        public async Task<List<RollingRetentionXDay>> CalculateRollingRetention7DayFromDB()
+            => await _rollingRetentionService.GetRollingRetention7DayFromDB();
+
+
     }
 }

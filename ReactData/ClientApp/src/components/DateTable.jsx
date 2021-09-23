@@ -66,8 +66,6 @@ const DateTable = ({
 
     return (
         <div className='container p-5'>
-            <h3 className='text-secondary'>DATE</h3>
-
             <div className='container p-5 pt-3'>
                 <form>
                     <table className='table'>
@@ -94,7 +92,6 @@ const DateTable = ({
                     {alertSucces && <AlertSucces text={alertSucces} />}
                     {alertWarning && <AlertWarning text={alertWarning} />}
                     {alertError && <AlertError text={alertError} />}
-                    <ButtonAddRow />
 
                     {!loading ? (
                         <button
@@ -104,8 +101,8 @@ const DateTable = ({
                             Save
                         </button>
                     ) : (
-                        <Loader />
-                    )}
+                            <Loader />
+                        )}
                 </form>
             </div>
         </div>

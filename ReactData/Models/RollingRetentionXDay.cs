@@ -2,7 +2,7 @@
 {
     public class RollingRetentionXDay
     {
-        public int Day { get; set; }
-        public double Percent { get; set; }
+        public int UserLifespan { get; set; }
+        public int Count { get; set; }
     }
 }

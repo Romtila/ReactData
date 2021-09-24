@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
+import './style.css';
 
 import {
     submitDates,
@@ -95,8 +96,8 @@ const DateTable = ({
 
                     {!loading ? (
                         <button
-                            type='submit'
-                            className='btn btn-success float-end me-3'
+                            type='button'
+                            className='btn btn-primary'
                             onClick={submitHandle}>
                             Save
                         </button>
